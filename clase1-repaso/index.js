@@ -121,3 +121,168 @@ if (true) {
 
 console.log(posicion)
 // console.log(equipo) // Esto nos va a tirar un error porque equipo no esta definido
+
+let numero = 19
+if (true) {
+  const numero2 = 19
+}
+
+// Funciones
+// Hositing: Es cuando javascript mueve todas las funciones al principio del archivo y despues ejecuta el codigo
+// Esto nos permite llamar a una funcion antes de declararla, solo si la declaramos con la palabra reservada function
+
+console.log(sumar(2, 3))
+
+function sumar(a, b) {
+  return a + b
+}
+
+// Expresiones de funciones
+const sumar2 = function (a, b) {
+  return a + b
+}
+
+// console.log(sumar3(2, 3)) // Esto da error porque sumar3 aun no esta definida
+// Funciones flechas
+const sumar3 = (a, b) => {
+  return a + b
+}
+
+// Los parentesis son opcionales cuando solo tenemos un parametro
+const sumar4 = (a) => {
+  return a + 1
+}
+
+console.log(sumar4(2))
+
+// Si la funcion solo tiene una linea de codigo, podemos omitir las llaves y el return ya que es implicito
+const sumar5 = (a, b) => a + b
+
+// return
+// Cuando una funcion no tiene un return, devuelve undefined
+// Cuando una funcion tiene un return, devuelve lo que le indiquemos
+// Cuando una funcion tiene un return, se corta la ejecucion de la funcion
+// Cuando una funcion tiene un return, podemos devolver cualquier tipo de dato
+// Cuando una funcion tiene un return, podemos devolver otra funcion
+
+function sumar10(a, b) {
+  const sumaDeParametros = a + b
+
+  console.log(sumaDeParametros)
+
+  return sumaDeParametros
+
+  console.log("Esto no se va a ejecutar nunca")
+}
+
+const suma = sumar10(100, 100)
+
+console.log(suma)
+
+// Parametros
+// Los parametros son los valores que recibe una funcion
+// Los parametros son opcionales
+// Los parametros tienen un orden
+// Los parametros tienen un valor por defecto
+// Los parametros pueden ser cualquier tipo de dato
+// Los parametros pueden ser funciones
+
+function saludar2(nombre = "luka", edad = 30) {
+  console.log(`Hola ${nombre}, tenes ${edad} años`)
+}
+
+saludar2("Juan", 20)
+saludar2("Juan")
+saludar2()
+saludar2(21, "Jose") // Esto queda mal porque no respetamos el orden de los parametros
+
+// Arrays
+// Los arrays son una lista de elementos
+// Los arrays pueden tener cualquier tipo de dato
+// Los arrays pueden tener cualquier cantidad de elementos
+// Los arrays pueden tener elementos repetidos
+// Los arrays pueden tener elementos de diferentes tipos de datos
+// Los arrays pueden tener otros arrays
+// Los arrays pueden tener objetos
+console.clear()
+const productos = [
+  {
+    id: 1,
+    nombre: "Coca Cola",
+    precio: 100,
+    stock: 100,
+    estaDisponible: true,
+  },
+  {
+    id: 2,
+    nombre: "Pepsi",
+    precio: 400,
+    stock: 400,
+    estaDisponible: true,
+  },
+  {
+    id: 3,
+    nombre: "Fanta",
+    precio: 300,
+    stock: 0,
+    estaDisponible: false,
+  },
+  {
+    id: 4,
+    nombre: "Mirinda",
+    precio: 400,
+    stock: 100,
+    estaDisponible: true,
+  },
+]
+
+// Metodos mas usados
+// filter - Filtra los elementos de un array segun una condicion y retorna un nuevo array con los elementos filtrados
+const filteredProducts = productos.filter((producto) => producto.precio > 100)
+
+// Eliminamos el id 2 del array
+const nuevosProductos = productos.filter((producto) => producto.id !== 2)
+
+// Filtramos los productos que estan disponibles
+const productosDisponibles = productos.filter(
+  (producto) => producto.estaDisponible
+)
+
+console.log(productosDisponibles)
+
+const productosDe400 = productos.filter((producto) => producto.precio === 400)
+console.log(productosDe400)
+
+// find
+// Encuentra un elemento de un array segun una condicion y retorna el primer elemento que coincida con la condicion
+console.clear()
+const productoEncontrado = productos.find((producto) => producto.id === 2)
+
+console.log(productoEncontrado)
+
+const cocaCola = productos.find(
+  (producto) => producto.nombre.toLowerCase() === "Coca Cola".toLowerCase()
+)
+
+console.log(cocaCola)
+
+// map
+// Recorre un array y retorna un nuevo array con los elementos modificados
+console.clear()
+const productosConIVA = productos.map((producto) => {
+  return {
+    ...producto,
+    precio: producto.precio * 1.21,
+  }
+})
+
+console.log(productosConIVA)
+
+const nombres = productos.map((producto) => producto.nombre)
+console.log(nombres)
+
+// forEach
+// some
+// every
+
+// length - Propiedad
