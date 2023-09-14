@@ -224,7 +224,7 @@ const productos = [
     id: 3,
     nombre: "Fanta",
     precio: 300,
-    stock: 0,
+    stock: 1,
     estaDisponible: false,
   },
   {
@@ -281,8 +281,139 @@ console.log(productosConIVA)
 const nombres = productos.map((producto) => producto.nombre)
 console.log(nombres)
 
-// forEach
-// some
-// every
+// spread operator - Operador de propagacion
 
-// length - Propiedad
+const persona = {
+  nombre: "Juan",
+  apellido: "Perez",
+  edad: 30,
+}
+
+const persona2 = {
+  ...persona,
+  nombre: "Luka",
+}
+
+const array1 = [1, 2, 3]
+const array2 = [4, 5, 6]
+
+const array3 = [...array1, ...array2]
+
+console.log(array3)
+
+// forEach - Recorre un array y ejecuta una funcion por cada elemento del array
+console.clear()
+productos.forEach((producto) => {
+  console.log(producto.nombre + " - " + producto.precio)
+})
+
+productos.forEach((producto) => {
+  document.body.style.backgroundColor = "black"
+  document.body.style.color = "white"
+  document.body.innerHTML += `<p>${producto.nombre} - ${producto.precio}</p>`
+})
+
+// some - Recorre un array y retorna true si algun elemento cumple con la condicion
+console.clear()
+const hayProductosDisponibles = productos.some(
+  (producto) => producto.estaDisponible
+)
+console.log(hayProductosDisponibles)
+
+const hayProductosConPocoStock = productos.some(
+  (producto) => producto.stock < 10
+)
+
+console.log(hayProductosConPocoStock)
+// every - Recorre un array y retorna true si todos los elementos cumplen con la condicion
+console.clear()
+
+const todosLosProductosDisponibles = productos.every(
+  (producto) => producto.estaDisponible
+)
+
+console.log(todosLosProductosDisponibles)
+
+const todosLosProductosConStock = productos.every(
+  (producto) => producto.stock > 0
+)
+
+console.log(todosLosProductosConStock)
+
+// length - Propiedad que nos indica la cantidad de elementos de un array
+console.clear()
+console.log(productos.length)
+
+// sort - Ordena los elementos de un array segun una condicion
+console.clear()
+
+const numeros = [1, 5, 2, 7, 8]
+
+const numerosOrdenados = numeros.sort((a, b) => b - a)
+
+console.log(numerosOrdenados)
+
+// toSorted - Ordena los elementos de un array segun una condicion y retorna un nuevo array con los elementos ordenados
+
+const numerosOrdenados2 = numeros.toSorted((a, b) => b - a)
+
+console.log(numerosOrdenados2)
+
+// Matrices - Son arrays de arrays
+console.clear()
+const matriz = [
+  [1, 2, 3],
+  [4, 5, 6],
+]
+
+for (let i = 0; i < matriz.length; i++) {
+  for (let j = 0; j < matriz[i].length; j++) {
+    console.log(`Columna ${j + 1} de la fila ${i + 1}`)
+  }
+}
+
+const tablero = [
+  ["X", "O", "X"],
+  ["O", "X", "X"],
+  ["O", "X", "O"],
+]
+
+// Algoritmos con arrays
+const findMaxAlgorithm = (array) => {
+  let max = array[0] // Recuperamos el primer elemento del array
+
+  // Recorremos el array desde el segundo elemento hasta el ultimo
+  array.forEach((el) => {
+    // Es el elemento actual mayor al maximo?
+    if (el > max) {
+      // Si es mayor, lo guardamos en la variable max
+      max = el
+    }
+  })
+
+  return max
+}
+
+console.clear()
+console.log(findMaxAlgorithm([1, 2, 3, 4, 6, 7, 8, 9]))
+
+// Una forma mas sencilla de hacerlo
+console.log(Math.max(...[1, 2, 3, 4, 6, 7, 8, 9, 200]))
+
+/*
+Ejercicios de practica:
+1 - Suma de elementos: Crea una función que reciba un array de números y devuelva la suma de todos los elementos.
+
+2 - Filtrar números pares: Escribe una función que tome un array de números y devuelva un nuevo array que contenga solo los números pares.
+
+3 - Encontrar el número más grande: Crea una función que encuentre el número más grande en un array de números.
+javascript
+
+4 - Eliminar duplicados: Escribe una función que elimine los elementos duplicados de un array.
+
+5 - Reversa: Implementa una función que invierta un array sin modificar el array original.
+
+6 - Buscar elemento: Crea una función que busque un elemento en un array y devuelva su índice, o -1 si no se encuentra.
+
+Extra: Ver este video sobre context de react para ir metiendonos en el tema: https://www.youtube.com/watch?v=UPCOJgLlr3w&ab_channel=FernandoHerrera
+*/
