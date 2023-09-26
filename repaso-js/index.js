@@ -404,7 +404,6 @@ console.log(Math.max(...[1, 2, 3, 4, 6, 7, 8, 9, 200]));
 Ejercicios de practica:
 1 - Suma de elementos: Crea una función que reciba un array de números y devuelva la suma de todos los elementos.
 
-
 2 - Filtrar números pares: Escribe una función que tome un array de números y devuelva un nuevo array que contenga solo los números pares.
 
 3 - Encontrar el número más grande: Crea una función que encuentre el número más grande en un array de números.
@@ -426,6 +425,7 @@ function sumaElementos(array) {
   }
   return suma;
 }
+
 console.log(sumaElementos([2, 3]));
 
 function numerosPares(array) {
@@ -438,10 +438,22 @@ function numerosPares(array) {
   return pares;
 }
 
-function numMasGrande(array) {
-  return Math.max(...array);
-}
+const numerosParesEjercicio = [1, 2, 3, 4, 5, 6].filter((num) => num % 2 === 0);
+console.log(numerosParesEjercicio);
 
+function numMasGrande(array) {
+  let numeroMasGrande = array[0];
+
+  array.forEach((el) => {
+    if (el > numeroMasGrande) {
+      numeroMasGrande = el;
+    }
+  });
+
+  console.log(numeroMasGrande);
+  return numeroMasGrande;
+}
+numMasGrande([1, 2, 3, 4, 6, 7, 8, 9, 12]);
 // esta esta mal//
 
 // function eliminarDuplicados(array) {
@@ -457,6 +469,66 @@ function numMasGrande(array) {
 //   return nuevosNumeros;
 // }
 
+const a = [2, 2, 2, 3, 4, 4, 6, 6, 7, 8, 9, 9];
+const eliminarDuplicados = () => {
+  const nuevoArray = [];
+  console.log(a);
+  a.forEach((el) => {
+    if (!nuevoArray.includes(el)) {
+      nuevoArray.push(el);
+    }
+  });
+
+  return nuevoArray;
+};
+
+console.log(eliminarDuplicados());
+
+const testArray = ["Hola", "chau", "mediodia"];
 function alReves(array) {
-  return array.reverse();
+  const reversedArray = array.map((el) => {
+    return el.split("").reverse().join("");
+  });
+  return reversedArray;
 }
+console.log(testArray);
+console.log(alReves(testArray));
+
+function indice(array, elemento) {
+  let declaratoria = array.indexOf(elemento);
+  return declaratoria;
+}
+
+const miArray = [10, 20, 30, 40, 50];
+const elementoBuscado = 30;
+
+console.log(indice(miArray, elementoBuscado));
+
+const invertirArray = (array) => {
+  console.log(array);
+  // Hacer un copia del array
+  const copia = structuredClone(array);
+
+  // Invertir la copia
+  const invertido = copia.reverse();
+
+  // Retornar la copia
+  return invertido;
+};
+
+console.log(invertirArray([1, 2, 3, 4, 5]));
+
+/**
+ * Ejercicios
+ * Encontrar números primos: Escribe una función que tome un número como entrada y devuelva un array con todos los números primos hasta ese número.
+ *
+ * Calcular promedio: Crea una función que tome un array de números y calcule el promedio
+ *
+ * Encontrar el segundo número más grande: Crea una función que encuentre el segundo número más grande en un array de números.
+ *
+ * Palíndromo de array: Escribe una función que determine si un array es un palíndromo, es decir, si se lee igual de izquierda a  derecha que de derecha a izquierda.
+ *
+ * Múltiplos de un número: Escribe una función que tome un número y un límite y devuelva un array con todos los múltiplos del número dentro del límite.
+ *
+ * Eliminar elementos por valor: Crea una función que elimine todos los elementos con un valor específico de un array.
+ */
