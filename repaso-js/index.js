@@ -532,3 +532,289 @@ console.log(invertirArray([1, 2, 3, 4, 5]));
  *
  * Eliminar elementos por valor: Crea una función que elimine todos los elementos con un valor específico de un array.
  */
+console.clear();
+const promedio = (array) => {
+  let inicial = 0;
+  let prom = 0;
+  for (let i = 0; i < array.length; i++) {
+    inicial += array[i];
+    prom = inicial / array.length;
+  }
+  return prom;
+};
+
+nuevoArray = [2, 4, 6, 8, 1];
+
+const segundoNumeroMasGrande = (n) => {
+  if (n.length < 2) {
+    return null;
+  }
+  let ordenado = n.sort((a, b) => b - a);
+  let segundo = ordenado[1];
+  return segundo;
+};
+// console.log(segundoNumeroMasGrande(nuevoArray));
+console.log(segundoNumeroMasGrande([1, 20, 40, 50, 60]));
+
+function palindromo(array) {
+  mitad1 = array.slice(0, array.length / 2);
+  mitad2 = array.slice(array.length / 2).reverse();
+  if (JSON.stringify(mitad1) === JSON.stringify(mitad2)) {
+    return "El array es palindromo";
+  } else {
+    return "El array no es palindromo";
+  }
+}
+
+const esPalindromo = (array) => {
+  const copia = structuredClone(array);
+  const invertido = copia.reverse();
+  return JSON.stringify(array) === JSON.stringify(invertido);
+};
+
+console.log(palindromo([1, 2, 3, 2, 1]));
+
+console.log(palindromo([1, 2, 3, 4, 5]));
+
+console.log(palindromo([2, 3, 4, 5]));
+console.log(palindromo([2, 3, 3, 2]));
+
+console.clear();
+console.log(esPalindromo([1, 2, 3, 2, 1]));
+console.log(esPalindromo([1, 2, 3, 4, 5]));
+console.log(esPalindromo([2, 3, 4, 5]));
+console.log(esPalindromo([2, 3, 3, 2]));
+
+const esPrimo = (numero) => {
+  if (numero <= 1) return false;
+  if (numero === 2) return true;
+  if (numero % 2 === 0) return false;
+
+  for (let i = 3; i <= numero / 2; i += 2) {
+    if (numero % i === 0) {
+      return false;
+    }
+  }
+
+  return true;
+};
+
+// const promedio = (array) => {
+//   let inicial = 0
+//   let prom = 0
+//   for (let i = 0; i < array.length; i++) {
+//     inicial += array[i]
+//     prom = inicial / array.length
+//   }
+//   return prom
+// }
+
+// ===========================================
+// METODO REDUCE
+const carrito = [
+  {
+    id: 1,
+    nombre: "Coca Cola",
+    precio: 100,
+    cantidad: 2,
+  },
+  {
+    id: 2,
+    nombre: "Pepsi",
+    precio: 400,
+    cantidad: 1,
+  },
+  {
+    id: 3,
+    nombre: "Fanta",
+    precio: 300,
+    cantidad: 1,
+  },
+  {
+    id: 4,
+    nombre: "Mirinda",
+    precio: 400,
+    cantidad: 3,
+  },
+];
+
+const total = carrito.reduce((acc, valorActual) => {
+  return acc + valorActual.precio * valorActual.cantidad;
+}, 0);
+
+console.log(total);
+
+const promedioConReduce = (array) => {
+  const suma = array.reduce((acc, el) => acc + el);
+  return suma / array.length;
+};
+
+/**
+ * Ejercicios usando metodo REDUCE:
+ * Suma de elementos: Escribe una función que sume todos los elementos de un array.
+ *
+ * Concatenación de strings: Implementa una función que tome un array de strings y los concatene en una sola cadena.
+ *
+ * Encontrar el máximo: Escribe una función que encuentre el número más grande en un array.
+ *
+ * Contar elementos: Crea una función que cuente cuántas veces aparece un elemento específico en un array.
+ */
+
+const array = [1, 2, 3, 4];
+
+const sumarElementos = (array) => {
+  const suma = array.reduce((acc, el) => acc + el, 0);
+  return suma;
+};
+
+console.log(sumarElementos(array));
+console.log(sumarElementos([2, 2, 10, 15]));
+
+const arrayStr = ["hola", "chau"];
+
+const concat = (array) => {
+  const concatenar = array.reduce((acc, el) => acc + " " + el, " ");
+  return concatenar;
+};
+
+console.log(concat(arrayStr));
+
+const maximo = (array) => {
+  const max = array.reduce((max, actual) => {
+    if (actual > max) {
+      // Si el elemento actual es mayor al maximo, el acumulador pasa a ser el elemento actual
+      return actual;
+    } else {
+      // sino el acumulador sigue siendo el maximo
+      return max;
+    }
+  }, array[0]);
+  return max;
+};
+
+console.log(maximo([1, 6, 2, 3, 5]));
+
+const contarElemento = (array, elemento) => {
+  const contador = array.reduce((contador, elAct) => {
+    if (elAct === elemento) {
+      return contador + 1;
+    } else {
+      return contador;
+    }
+  }, 0);
+
+  return contador;
+};
+
+console.log(contarElemento([1, 2, 3, 4, 5, 5, 5, 5, 5], 5));
+console.log(contarElemento([1, 2, 3, 4, 5, 5, 5, 5, 5], 2));
+console.log(contarElemento([1, 2, 3, 4, 5, 5, 5, 5, 5], 100));
+
+/**
+ const d = [1, 2, 3, 4]
+ * acc = 0
+ * 1ra vuelta: acc = acc + valorActual = 0 + 1 = 1
+ * 2da vuelta: acc = acc + valorActual = 1 + 2 = 3
+ * 3ra vuelta: acc = acc + valorActual = 3 + 3 = 6
+ * 4ta vuelta: acc = acc + valorActual = 6 + 4 = 10
+ */
+
+// ===========================================
+// OBJETOS
+// Declaracion y asignacion de objetos
+
+const objPersona = {
+  nombre: "Luka",
+  edad: 21,
+  estaTrabajando: true,
+  familia: ["Juan", "Jose", "Maria"],
+  direccion: {
+    calle: "Av. Siempre Viva",
+    numero: 123,
+  },
+  trabajar: function () {
+    console.log("Estoy dando clases de javascript");
+  },
+  "nombre completo": "Luka Modric",
+};
+
+// Acceder a las propiedades de un objeto
+// 2 formas - Notacion de punto y notacion de corchetes
+console.log(objPersona.nombre);
+console.log(objPersona.edad);
+
+const propiedadAAcceder = "estaTrabajando";
+
+console.log(objPersona["nombre"]);
+console.log(objPersona["edad"]);
+console.log(objPersona["nombre completo"]);
+
+console.log(objPersona.propiedadAAcceder);
+console.log(objPersona[propiedadAAcceder]);
+
+// Acceder a los metodos de un objeto
+objPersona.trabajar();
+objPersona["trabajar"]();
+
+// Agregar propiedades a un objeto
+objPersona.apellido = "Perez";
+objPersona["apellido"] = "Perez";
+console.log(objPersona);
+
+// Modificar propiedades de un objeto
+objPersona.edad = 30;
+objPersona["edad"] = 30;
+console.log(objPersona);
+
+// Eliminar propiedades de un objeto
+delete objPersona.edad;
+delete objPersona["edad"];
+console.log(objPersona);
+
+console.clear();
+/**
+ * Ejercicios de objetos:
+ * Crear un objeto persona con las siguientes propiedades:
+ * nombre, apellido, edad, estaCasado, tieneHijos, familia, direccion, saludar
+ * Crear un objeto direccion con las siguientes propiedades:
+ * calle, numero, ciudad, provincia, pais
+ *
+ * Una vez que tenemos los 2 objetos creados, agregar el objeto direccion a la propiedad direccion del objeto persona
+ * Agregar un metodo al objeto persona que se llame cumpleaños y que aumente la edad en 1, luego mostrar por consola la edad de la persona
+ * Agregar un metodo al objeto persona que se llame mudanza y que reciba como parametro un objeto direccion y que modifique la propiedad direccion del objeto persona
+ * Eliminar el metodo saludar del objeto persona
+ */
+
+const obPersona = {
+  nombre: "Jose",
+  apellido: "Machicote",
+  edad: 30,
+  estaCasado: false,
+  tieneHijos: false,
+  direccion: "Ciudadela 1234",
+  saludar: true,
+  cumpleanos: function () {
+    this.edad++;
+  },
+};
+
+const objDireccion = {
+  calle: "Ciudadela",
+  numero: 1234,
+  ciudad: "Montevideo",
+  provincia: "Montevideo",
+  pais: "Uruguay",
+};
+
+obPersona.direccion = objDireccion;
+console.log(obPersona);
+
+console.log(`Edad antes del cumple: ${obPersona.edad}`);
+obPersona.cumpleanos();
+console.log(`Edad post cumple es: ${obPersona.edad}`);
+
+obPersona.mudanza = objDireccion;
+console.log(obPersona);
+
+delete obPersona.saludar;
+console.log(obPersona);
